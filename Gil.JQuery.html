@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gil the Puyat</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-size: 30px;
+            font-weight: 125;
+            font-family: sans-serif;
+            background-color: rgba(220, 100, 50);
+            color: white;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 260px;
+            height: 206px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQBkPIM7THp-pth18UNibAOOYJf6veGzs_og&s');
+            background-blend-mode: lighten;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQBkPIM7THp-pth18UNibAOOYJf6veGzs_og&s" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQBkPIM7THp-pth18UNibAOOYJf6veGzs_og&s">
+    </a>
+    <p>Hi, I'm <strong>Gil Magboo</strong>!</p>
+    <p>From Manila, Philippines</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="form-control">
+            <input type="button" value="7" onclick="addToDisplay('7')">
+            <input type="button" value="8" onclick="addToDisplay('8')">
+            <input type="button" value="9" onclick="addToDisplay('9')">
+            <input type="button" value="+" onclick="addToDisplay('+')">
+        </div>
+        <div class="form-control">
+            <input type="button" value="4" onclick="addToDisplay('4')">
+            <input type="button" value="5" onclick="addToDisplay('5')">
+            <input type="button" value="6" onclick="addToDisplay('6')">
+            <input type="button" value="-" onclick="addToDisplay('-')">
+        </div>
+        <div class="form-control">
+            <input type="button" value="1" onclick="addToDisplay('1')">
+            <input type="button" value="2" onclick="addToDisplay('2')">
+            <input type="button" value="3" onclick="addToDisplay('3')">
+            <input type="button" value="*" onclick="addToDisplay('*')">
+        </div>
+        <div class="form-control">
+            <input type="button" value="." onclick="addToDisplay('.')">
+            <input type="button" value="0" onclick="addToDisplay('0')">
+            <input type="button" value="C" onclick="clearDisplay()">
+            <input type="button" value="/" onclick="addToDisplay('/')">
+        </div>
+        <div class="form-control">
+            <input type="button" value="=" onclick="calculateResult()">
+        </div>
+    </div>
+    <div>
+    -----------------------------------------------------------------------
+    </div>
+    <div>
+    <p>Click the <strong>button</strong> below to change the background :)</p>
+    </div>
+    <div class="color-buttons">
+        <button class="color-button" onclick="changeBackgroundColor('blue')">Blue</button>
+        <button class="color-button" onclick="changeBackgroundColor('yellow')">Yellow</button>
+        <button class="color-button" onclick="changeBackgroundColor('red')">Red</button>
+        <button class="color-button" onclick="changeBackgroundColor('green')">Green</button>
+        <button class="color-button" onclick="changeBackgroundColor('purple')">Purple</button>
+        <button class="color-button" onclick="changeBackgroundColor('orange')">Orange</button>
+        <button class="color-button1" onclick="changeBackgroundColorRandom()">Random</button>
+    </div>
+    
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (e) {
+                document.getElementById('display').value = 'Error lods';
+            }
+        }
+
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        function changeBackgroundColorRandom() {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            var randomColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        $(document).ready(function() {
+            $(".color-button").on("click", function() {
+                $(".color-button").not(this).fadeIn();
+                $(this).fadeOut();
+            });
+        });
+    </script>
+</body>
+</html>
